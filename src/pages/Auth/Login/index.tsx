@@ -1,6 +1,11 @@
 import React from "react";
-import { Container } from "./styles";
+import { Container, ContentLeft, ContentRight } from "./styles";
 
 export const Login = () => {
-  return <Container>LogInPage</Container>;
+  return (
+    <Container>
+      <ContentLeft></ContentLeft>
+      <ContentRight></ContentRight>
+    </Container>
+  );
 };
