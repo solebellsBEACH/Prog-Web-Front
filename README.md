@@ -45,3 +45,7 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 # Prog-Web-Front
+yarn add v1.22.15
+[1/4] Resolving packages...
+info If you think this is a bug, please open a bug report with the information provided in "/home/lucas/Documentos/Ifes/ProgWeb/Refactor - Site/prog_web_front/yarn-error.log".
+info Visit https://yarnpkg.com/en/docs/cli/add for documentation about this command.
