@@ -3,18 +3,19 @@ import TextField from "@material-ui/core/TextField";
 import { useState } from "react";
 import { Container, Content, Subtitle } from "../styles";
 
-export const Login = () => {
+export const Register = () => {
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogIn = () => {
-    console.log({ email: email, password: password });
+    console.log({ email: email, name: name, password: password });
   };
 
   return (
     <Container>
       <Content>
-        <Subtitle>Login</Subtitle>
+        <Subtitle>Register</Subtitle>
         <TextField
           id="outlined-basic"
           className="text-field"
@@ -23,6 +24,16 @@ export const Login = () => {
           variant="outlined"
           onChange={(e) => {
             setEmail(e.target.value);
+          }}
+        />
+        <TextField
+          id="outlined-basic"
+          className="text-field"
+          label="Nome"
+          name="name"
+          variant="outlined"
+          onChange={(e) => {
+            setName(e.target.value);
           }}
         />
 
@@ -41,7 +52,7 @@ export const Login = () => {
           variant="contained"
           onClick={handleLogIn}
         >
-          LogIn
+          Register
         </Button>
       </Content>
     </Container>

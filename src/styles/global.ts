@@ -13,7 +13,7 @@ export const GlobalStyle = createGlobalStyle`
         --Warning	:#FF0000;
         --Attention	:#FFFF00;
         --White	:#FFFFFF;
-        --Background	:#FFF5EE;
+        --Background	:#F2CCFF;
         --Black	:#000000;
     }
     button{
@@ -25,10 +25,23 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     *{
-        background: #FFF5EE;
+
+        /* background: #FFF5EE; */
         margin: 0;
         padding: 0;
+
+        font-family: 'Ubuntu', sans-serif;
         box-sizing: border-box;
         text-decoration: none;
+
+        .standard-input {
+            width:60% ;
+        }
+
+.formik-form{
+    display: flex;
+    flex-direction: row;
+}
     }
+
 `;
