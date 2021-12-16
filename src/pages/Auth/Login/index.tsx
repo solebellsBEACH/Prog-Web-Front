@@ -1,14 +1,28 @@
 import { Button } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
+
 import { useState } from "react";
-import { Container, Content, Subtitle } from "../styles";
+import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
+import { api } from "../../../utils/api/api";
+import { Container, Content, LinkComponent, Subtitle } from "../styles";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate();
+
   const handleLogIn = () => {
-    console.log({ email: email, password: password });
+    try {
+      api.get("test");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleRedirectRegister = () => {
+    navigate("/register");
   };
 
   return (
@@ -43,6 +57,9 @@ export const Login = () => {
         >
           LogIn
         </Button>
+        <LinkComponent onClick={handleRedirectRegister}>
+          Caso não tenha um cadastro, clique aqui!
+        </LinkComponent>
       </Content>
     </Container>
   );

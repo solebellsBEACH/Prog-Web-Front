@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link } from "@mui/material";
+
 export const Container = styled.div`
   background: var(--Background);
   min-height: 100vh;
@@ -21,15 +21,24 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-  width: 50vw;
-  min-height: 50vh;
+  margin-top: 3vh;
+  border-radius: 20px;
+  margin-bottom: 3vh;
   height: auto;
-  background: var(--White);
+  min-height: 94vh;
+  width: 94vw;
+  background-color: white;
   display: flex;
   flex-direction: column;
-  border-radius: 10px;
-  /* justify-content: center; */
-  align-items: center;
+
+  #setting-box {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: 1vh;
+    margin-left: -0.5vw;
+  }
 `;
 
 export const Subtitle = styled.div`
@@ -39,15 +48,4 @@ export const Subtitle = styled.div`
   background: none;
   color: var(--Blue1);
   margin-bottom: 3vh;
-`;
-
-export const LinkComponent = styled.h2`
-  margin-top: 2vh;
-  color: var(--Blue1);
-
-  font-size: 1.5rem;
-
-  &:hover {
-    opacity: 0.8;
-  }
 `;

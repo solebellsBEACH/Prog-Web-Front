@@ -1,15 +1,23 @@
 import { Button } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import { useState } from "react";
-import { Container, Content, Subtitle } from "../styles";
+import { useNavigate } from "react-router";
+import { Container, Content, LinkComponent, Subtitle } from "../styles";
 
 export const Register = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate();
+
   const handleLogIn = () => {
+    navigate("/dashboard");
     console.log({ email: email, name: name, password: password });
+  };
+
+  const handleRedirectRegister = () => {
+    navigate("/");
   };
 
   return (
@@ -54,6 +62,9 @@ export const Register = () => {
         >
           Register
         </Button>
+        <LinkComponent onClick={handleRedirectRegister}>
+          Caso já tenha um cadastro, clique aqui!
+        </LinkComponent>
       </Content>
     </Container>
   );
