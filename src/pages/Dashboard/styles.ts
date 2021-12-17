@@ -34,10 +34,15 @@ export const Content = styled.div`
   #setting-box {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    width: 100%;
+    justify-content: space-between;
+    width: 96%;
     margin-top: 1vh;
-    margin-left: -0.5vw;
+    margin-left: 2vw;
+    margin-bottom: 2vh;
+
+    #outlined-basic {
+      width: 200px;
+    }
   }
 `;
 
