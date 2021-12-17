@@ -1,7 +1,8 @@
+import { AnimalItem } from "../../../components/AnimalItem";
 import { Header } from "../../../components/Header";
 import { SettingBox } from "../../../components/SettingsBox";
-import { TaskBar } from "../../../components/TaskBar";
 import { Container, Content } from "../styles";
+import { ContainerGrid } from "./styles";
 
 export const Adoption: React.FC = () => {
   return (
@@ -11,6 +12,12 @@ export const Adoption: React.FC = () => {
         <div id="setting-box">
           <SettingBox />
         </div>
+        <ContainerGrid>
+          <AnimalItem />
+          <AnimalItem />
+          <AnimalItem />
+          <AnimalItem />
+        </ContainerGrid>
       </Content>
     </Container>
   );

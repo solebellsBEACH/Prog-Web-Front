@@ -3,6 +3,7 @@ import { ContainerIconBox, ContainerTaskBox, LabelBox } from "./TaskBoxStyles";
 import { IoMdBook } from "react-icons/io";
 import { FaHandHoldingHeart } from "react-icons/fa";
 import { ImCheckmark2 } from "react-icons/im";
+import { useNavigate } from "react-router-dom";
 
 interface TaskBoxProps {
   label: string;
@@ -22,6 +23,7 @@ const TaskBox = ({ label, callBackFunct, icon }: TaskBoxProps) => {
 };
 
 export const TaskBar = () => {
+  const navigate = useNavigate();
   return (
     <Container>
       <TaskBox
@@ -32,7 +34,9 @@ export const TaskBar = () => {
       <TaskBox
         label="Sistema de adoção"
         icon={<FaHandHoldingHeart size={40} />}
-        callBackFunct={() => {}}
+        callBackFunct={() => {
+          navigate("/adoption");
+        }}
       />
       <TaskBox
         label="Teste auxiliar"
