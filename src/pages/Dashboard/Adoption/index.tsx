@@ -13,10 +13,7 @@ export const Adoption: React.FC = () => {
           <SettingBox />
         </div>
         <ContainerGrid>
-          <AnimalItem />
-          <AnimalItem />
-          <AnimalItem />
-          <AnimalItem />
+          <AnimalItem name="Bob" age={5} breed="Pit Bull" />
         </ContainerGrid>
       </Content>
     </Container>

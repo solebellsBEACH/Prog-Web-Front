@@ -24,7 +24,35 @@ export const AnimalLogo = styled.div`
 
 export const Content = styled.div`
   height: 80%;
+  margin-left: 1vw;
   min-width: 30%;
-  background-color: green;
   width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
+export const NameContainer = styled.div`
+  h1 {
+    font-size: 1rem;
+    margin-right: 5px;
+  }
+
+  &:hover {
+    color: var(--Purple);
+  }
+`;
+
+export const BreedContainer = styled.div`
+  h1 {
+    font-size: 1rem;
+    margin-right: 5px;
+  }
+`;
+
+export const AgeContainer = styled.div`
+  h1 {
+    font-size: 1rem;
+    margin-right: 5px;
+  }
 `;

@@ -9,9 +9,10 @@ export const Container = styled.div`
   align-items: center;
 `;
 export const Content = styled.div`
-  width: 30vw;
+  max-width: 30vw;
   min-height: 5vh;
   height: auto;
+  min-width: 80px;
   background: var(--Pink2);
   display: flex;
   justify-content: center;
