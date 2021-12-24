@@ -1,3 +1,5 @@
+//ESSE ARQUIVO RETORNA UM JSON  SIMULANDO UMA API
+
 export const fakeApiAnimals = {
   animals: [
     { name: "Tobby", breed: "-", age: 5, type_of_animal: 4 },

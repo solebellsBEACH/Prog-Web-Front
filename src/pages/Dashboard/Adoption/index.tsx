@@ -8,8 +8,9 @@ import { Container, Content } from "../styles";
 import { ContainerGrid } from "./styles";
 
 export const Adoption: React.FC = () => {
+  //ARMAZENA O ESTADO DE BUSCA
   const [searchState, setSearchState] = useState("");
-
+  //ESSA FUNCAO RETORNA UM MAP E UM FILTER QUE MUDA QUANDO PESQUISA UM NOME EM FORMA DE COMPONENTE
   const AnimalsBox = fakeApiAnimals.animals
     .filter((val) => {
       console.log(val);
@@ -27,6 +28,7 @@ export const Adoption: React.FC = () => {
         type_of_animal={item.type_of_animal}
       />
     ));
+
   return (
     <Container style={{}}>
       <Header label="Sistema de Adoção" />

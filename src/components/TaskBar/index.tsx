@@ -4,7 +4,7 @@ import { IoMdBook } from "react-icons/io";
 import { FaHandHoldingHeart } from "react-icons/fa";
 import { ImCheckmark2 } from "react-icons/im";
 import { useNavigate } from "react-router-dom";
-
+//PEGA AS PROPS DO ELEMENTO
 interface TaskBoxProps {
   label: string;
   callBackFunct: () => void;
@@ -21,7 +21,7 @@ const TaskBox = ({ label, callBackFunct, icon }: TaskBoxProps) => {
     </ContainerTaskBox>
   );
 };
-
+//ESSE É RESPONSAVEL POR FICAR COMO BARRA DE TAREFA  Q FICA NO SUPERIOR DA PAGINA
 export const TaskBar = () => {
   const navigate = useNavigate();
   return (

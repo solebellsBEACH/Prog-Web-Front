@@ -3,14 +3,15 @@ import TextField from "@material-ui/core/TextField";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { Container, Content, LinkComponent, Subtitle } from "../styles";
-
+// AQUI TEMOS A FUNCAO QUE GERA A PAGINA DE REGISTRO
 export const Register = () => {
+  //ARMAZENA O ESTADO DE NOME, EMAIL E PASSWORD
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
-
+  //FUNCAO DE QUANDO CLICAMOS NO BOTAO DE LOG IN
   const handleLogIn = () => {
     navigate("/dashboard");
     console.log({ email: email, name: name, password: password });

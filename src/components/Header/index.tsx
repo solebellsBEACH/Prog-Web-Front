@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Content, PageLabel } from "./styles";
 
+//REPRESENTA A PROP NECESSARIA DO COMPONENTE, NESSE CASO SÓ O NOME DA PAGINA
 interface HeaderProps {
   label: string;
 }

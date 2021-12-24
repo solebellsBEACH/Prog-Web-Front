@@ -42,7 +42,7 @@ export const Subtitle = styled.div`
 `;
 
 export const LinkComponent = styled.h2`
-  margin-top: 2vh;
+  margin: 2vh;
   color: var(--Blue1);
 
   font-size: 1.5rem;

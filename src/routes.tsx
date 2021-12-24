@@ -3,7 +3,7 @@ import { Login } from "./pages/Auth/Login";
 import { Register } from "./pages/Auth/Register";
 import { Adoption } from "./pages/Dashboard/Adoption";
 import { Home } from "./pages/Dashboard/Home";
-
+//ESSE ARQUIVO É RESPONSAVEL POR CRIAR AS ROTAS E OS PATHS DA APLICACAO
 export const RoutesComponent: React.FC = () => {
   return (
     <Router>

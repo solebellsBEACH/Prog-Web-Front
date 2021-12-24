@@ -1,10 +1,17 @@
 import { Button, Menu, MenuItem } from "@material-ui/core";
 import { useState } from "react";
 import { FiSettings } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
+
+//ESSE ELEMENTO É AQUELE ESTA EM TODAS AS PAGINAS E É RESPONSAVEL POR DAR UM REDIRECT PARA AS PAGINAS
 
 export const SettingBox: React.FC = () => {
+  const navigate = useNavigate();
+
   const [anchorEl, setAnchorEl] = useState(null);
+
   const open = Boolean(anchorEl);
+
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
   };
@@ -19,7 +26,9 @@ export const SettingBox: React.FC = () => {
         onClick={handleClick}
         style={{ color: "#4B0082" }}
       />
+
       <Menu
+        //COMPONENTE DE MENU
         id="basic-menu"
         anchorEl={anchorEl}
         open={open}
@@ -36,9 +45,13 @@ export const SettingBox: React.FC = () => {
           horizontal: "right",
         }}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <MenuItem
+          onClick={() => {
+            navigate("/dashboard");
+          }}
+        >
+          Home
+        </MenuItem>
       </Menu>
     </div>
   );

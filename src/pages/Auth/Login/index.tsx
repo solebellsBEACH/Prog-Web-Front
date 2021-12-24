@@ -1,18 +1,21 @@
 import { Button } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
-
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { api } from "../../../utils/api/api";
 import { Container, Content, LinkComponent, Subtitle } from "../styles";
 
+// AQUI TEMOS A FUNCAO QUE GERA A PAGINA DE LOG IN
+
 export const Login = () => {
+  //ARMAZENA O ESTADO DE EMAIL E PASSWORD
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
 
+  //FUNCAO DE QUANDO CLICAMOS NO BOTAO DE LOG IN
   const handleLogIn = () => {
     try {
       api.get("test");

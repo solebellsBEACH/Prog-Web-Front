@@ -9,13 +9,14 @@ import {
 import { MdPets } from "react-icons/md";
 import { FaDog, FaCat } from "react-icons/fa";
 import { GiSeatedMouse, GiHummingbird } from "react-icons/gi";
+//REPRESENTA AS PROPS NECESSARIOS PARA O ELEMENTO
 interface AnimalItemProps {
   name: string;
   breed: string;
   age: number;
   type_of_animal: number;
 }
-
+//ESSE COMPONENTE É RESPONSAVEL POR REPRESENTAR O ANIMAL NA LISTA
 export const AnimalItem = ({
   age,
   breed,

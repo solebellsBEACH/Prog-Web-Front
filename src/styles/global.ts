@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
+//NESSE ARQUIVO ESTAO ARMAZENADOS TODAS AS VARIAVEIS E CONFIGURACOES GLOBAIS DA app
 export const GlobalStyle = createGlobalStyle`
     :root{
         --Pink2	:#EE82EE;
