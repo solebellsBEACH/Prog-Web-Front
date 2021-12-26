@@ -52,6 +52,13 @@ export const SettingBox: React.FC = () => {
         >
           Home
         </MenuItem>
+        <MenuItem
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          Home
+        </MenuItem>
       </Menu>
     </div>
   );

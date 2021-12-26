@@ -2,23 +2,21 @@ import { Button } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { toast } from "react-toastify";
 import { api } from "../../../utils/api/api";
 import { Container, Content, LinkComponent, Subtitle } from "../styles";
 
 // AQUI TEMOS A FUNCAO QUE GERA A PAGINA DE LOG IN
-
 export const Login = () => {
   //ARMAZENA O ESTADO DE EMAIL E PASSWORD
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [state, setState] = useState({ email: "", password: "" });
 
   const navigate = useNavigate();
 
   //FUNCAO DE QUANDO CLICAMOS NO BOTAO DE LOG IN
   const handleLogIn = () => {
     try {
-      api.get("test");
+      api.post("session", { email: state.email, password: state.password });
+      navigate("/dashboard");
     } catch (error) {
       console.log(error);
     }
@@ -39,7 +37,7 @@ export const Login = () => {
           name="email"
           variant="outlined"
           onChange={(e) => {
-            setEmail(e.target.value);
+            setState({ email: e.target.value, password: state.password });
           }}
         />
 
@@ -50,7 +48,7 @@ export const Login = () => {
           name="password"
           variant="outlined"
           onChange={(e) => {
-            setPassword(e.target.value);
+            setState({ email: state.email, password: e.target.value });
           }}
         />
         <Button
