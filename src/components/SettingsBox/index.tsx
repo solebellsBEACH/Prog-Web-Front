@@ -57,7 +57,7 @@ export const SettingBox: React.FC = () => {
             navigate("/");
           }}
         >
-          Home
+          LogOut
         </MenuItem>
       </Menu>
     </div>

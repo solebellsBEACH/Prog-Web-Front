@@ -1,4 +1,5 @@
 import { Header } from "../../../components/Header";
+import { InformationItem } from "../../../components/InformationItem";
 import { SettingBox } from "../../../components/SettingsBox";
 import { TaskBar } from "../../../components/TaskBar";
 import { Container, Content } from "../styles";
@@ -12,6 +13,12 @@ export const Home: React.FC = () => {
         <div id="setting-box">
           <SettingBox />
         </div>
+
+        <InformationItem
+          type_of_animal={1}
+          subtitle="Test"
+          contentText="kdkdkdkdkdkkk sdkdkdkdkkdk dkdkkdkdkdkd dkdkdkdkdk dkdkdkkd"
+        />
       </Content>
     </Container>
   );

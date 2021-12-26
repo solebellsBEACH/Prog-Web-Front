@@ -11,3 +11,12 @@ export const fakeApiAnimals = {
     { name: "Felipe", breed: "-", age: 5, type_of_animal: 4 },
   ],
 };
+
+export const fakeApiTypeOfAnimals = {
+  types: [
+    { id: 1, name: "Cachorro" },
+    { id: 2, name: "Gato" },
+    { id: 3, name: "Hamster" },
+    { id: 4, name: "Calopsita" },
+  ],
+};

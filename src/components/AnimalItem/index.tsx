@@ -1,6 +1,5 @@
 import {
   Container,
-  AnimalLogo,
   Content,
   NameContainer,
   BreedContainer,
@@ -9,6 +8,7 @@ import {
 import { MdPets } from "react-icons/md";
 import { FaDog, FaCat } from "react-icons/fa";
 import { GiSeatedMouse, GiHummingbird } from "react-icons/gi";
+import { AnimalLogo } from "../styles";
 //REPRESENTA AS PROPS NECESSARIOS PARA O ELEMENTO
 interface AnimalItemProps {
   name: string;
