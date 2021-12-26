@@ -12,11 +12,14 @@ export const Login = () => {
 
   const navigate = useNavigate();
 
+  const postSessionAndToDashboard = () => {
+    api.post("session", { email: state.email, password: state.password });
+    navigate("/dashboard");
+  };
   //FUNCAO DE QUANDO CLICAMOS NO BOTAO DE LOG IN
   const handleLogIn = () => {
     try {
-      api.post("session", { email: state.email, password: state.password });
-      navigate("/dashboard");
+      postSessionAndToDashboard();
     } catch (error) {
       console.log(error);
     }
