@@ -5,13 +5,13 @@ import { FaHandHoldingHeart } from "react-icons/fa";
 import { ImCheckmark2 } from "react-icons/im";
 import { useNavigate } from "react-router-dom";
 //PEGA AS PROPS DO ELEMENTO
-interface TaskBoxProps {
+interface ITaskBoxProps {
   label: string;
   callBackFunct: () => void;
   icon: any;
 }
 
-const TaskBox = ({ label, callBackFunct, icon }: TaskBoxProps) => {
+const TaskBox = ({ label, callBackFunct, icon }: ITaskBoxProps) => {
   return (
     <ContainerTaskBox>
       <ContainerIconBox>{icon}</ContainerIconBox>

@@ -15,6 +15,7 @@ export const SettingBox: React.FC = () => {
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
   };

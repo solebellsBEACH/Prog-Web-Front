@@ -10,7 +10,7 @@ import { MdPets } from "react-icons/md";
 import { FaDog, FaCat } from "react-icons/fa";
 import { GiSeatedMouse, GiHummingbird } from "react-icons/gi";
 //REPRESENTA AS PROPS NECESSARIOS PARA O ELEMENTO
-interface AnimalItemProps {
+interface IAnimalItemProps {
   name: string;
   breed: string;
   age: number;
@@ -22,7 +22,7 @@ export const AnimalItem = ({
   breed,
   name,
   type_of_animal,
-}: AnimalItemProps) => {
+}: IAnimalItemProps) => {
   let icon = <MdPets size={45} />;
   switch (type_of_animal) {
     case 1:
