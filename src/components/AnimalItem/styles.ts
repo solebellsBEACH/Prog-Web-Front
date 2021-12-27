@@ -12,16 +12,6 @@ export const Container = styled.div`
   align-items: center;
 `;
 
-export const AnimalLogo = styled.div`
-  background-color: white;
-  width: 70px;
-  height: 70px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 100%;
-`;
-
 export const Content = styled.div`
   height: 80%;
   margin-left: 1vw;

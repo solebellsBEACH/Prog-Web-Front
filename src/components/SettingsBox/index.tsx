@@ -51,14 +51,14 @@ export const SettingBox: React.FC = () => {
             navigate("/dashboard");
           }}
         >
-          Home
+          Informações Gerais
         </MenuItem>
         <MenuItem
           onClick={() => {
             navigate("/");
           }}
         >
-          Home
+          Logout
         </MenuItem>
       </Menu>
     </div>
