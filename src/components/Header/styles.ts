@@ -1,9 +1,11 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 50vw;
+  min-width: 50vw;
+  width: auto;
   margin-top: 1vh;
-  height: 10vh;
+  min-height: 10vh;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,8 +28,10 @@ font-size:1vw
 `;
 
 export const PageLabel = styled.div`
-  width: 50vw;
-  height: 5vh;
+  min-width: 50vw;
+  width: auto;
+  min-height: 5vh;
+  height: auto;
   background: var(--Blue);
   display: flex;
   justify-content: center;

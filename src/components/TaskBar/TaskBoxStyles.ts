@@ -26,6 +26,7 @@ export const LabelBox = styled.div`
   width: 100%;
   margin-top: 1px;
   height: 45px;
+  margin-bottom: 0.5vh;
   background-color: var(--White);
   text-transform: uppercase;
   display: flex;

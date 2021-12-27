@@ -12,6 +12,12 @@ interface SelectAnimalProps {
 }
 
 const SelectAnimal = ({ setState }: SelectAnimalProps) => {
+  const MenuItensContainer = fakeApiTypeOfAnimals.types.map((item) => (
+    <MenuItem value={item.id}>
+      <em>{item.name} </em>
+    </MenuItem>
+  ));
+
   return (
     <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
       <InputLabel id="demo-simple-select-standard-label">Especie</InputLabel>
@@ -26,11 +32,7 @@ const SelectAnimal = ({ setState }: SelectAnimalProps) => {
         <MenuItem value={0}>
           <em>Todos</em>
         </MenuItem>
-        {fakeApiTypeOfAnimals.types.map((item) => (
-          <MenuItem value={item.id}>
-            <em>{item.name} </em>
-          </MenuItem>
-        ))}
+        {MenuItensContainer}
       </Select>
     </FormControl>
   );
@@ -38,13 +40,13 @@ const SelectAnimal = ({ setState }: SelectAnimalProps) => {
 
 //ESSA FUNCAO RETORNA A PAGINA HOME DO DASHBOARD
 export const Home: React.FC = () => {
-  const [animalInformation, setAnimalInformation] = useState(0);
+  const [animalInformationId, setAnimalInformationId] = useState(0);
 
   const InformationsContainer = fakeApiInfos.infos
     .filter((val) => {
-      if (animalInformation == 0) {
+      if (animalInformationId == 0) {
         return val;
-      } else if (animalInformation == val.type_of_animal) {
+      } else if (animalInformationId == val.type_of_animal) {
         return val;
       }
     })
@@ -55,13 +57,14 @@ export const Home: React.FC = () => {
         contentText={item.contentText}
       />
     ));
+
   return (
     <Container>
       <Header label="Home" />
       <TaskBar />
       <Content>
         <div id="setting-box">
-          <SelectAnimal setState={setAnimalInformation} />
+          <SelectAnimal setState={setAnimalInformationId} />
           <SettingBox />
         </div>
         {InformationsContainer}
