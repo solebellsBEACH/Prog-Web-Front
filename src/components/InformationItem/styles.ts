@@ -5,7 +5,8 @@ export const Container = styled.div`
   margin: 1vh 3vw 1vh 3vw;
   min-height: 13vh;
   height: auto;
-  background-color: blue;
+  background-color: var(--Pink1);
+  border-radius: 5px;
 `;
 
 export const AnimalLogoContainer = styled.div`
@@ -24,7 +25,8 @@ export const Content = styled.div`
   height: auto;
   display: flex;
   flex-direction: column;
-  border: 2px solid black;
+  border-radius: 5px;
+  border: 2px solid var(--Purple);
 `;
 
 export const Subtitle = styled.h1`
@@ -36,5 +38,5 @@ export const Subtitle = styled.h1`
 export const ContentText = styled.h2`
   margin-left: 1vw;
   font-size: 0.9rem;
-  margin-top: 0.7vh;
+  margin: 0.7vh;
 `;

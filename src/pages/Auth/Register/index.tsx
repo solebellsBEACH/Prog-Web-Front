@@ -2,6 +2,7 @@ import { Button } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import { api } from "../../../utils/api/api";
 import { Container, Content, LinkComponent, Subtitle } from "../styles";
 // AQUI TEMOS A FUNCAO QUE GERA A PAGINA DE REGISTRO
 export const Register = () => {
@@ -13,8 +14,11 @@ export const Register = () => {
   const navigate = useNavigate();
   //FUNCAO DE QUANDO CLICAMOS NO BOTAO DE LOG IN
   const handleLogIn = () => {
-    navigate("/dashboard");
-    console.log({ email: email, name: name, password: password });
+    try {
+      api.post("/user", { email: email, ausername: name, password: password });
+    } catch (error) {
+      console.log("error");
+    }
   };
 
   const handleRedirectRegister = () => {
