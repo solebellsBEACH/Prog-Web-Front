@@ -1,64 +1,70 @@
-import {
-  FormControl,
-  FormHelperText,
-  InputLabel,
-  MenuItem,
-  Select,
-} from "@material-ui/core";
+import { FormControl, InputLabel, MenuItem, Select } from "@material-ui/core";
+import { useState } from "react";
 import { Header } from "../../../components/Header";
 import { InformationItem } from "../../../components/InformationItem";
 import { SettingBox } from "../../../components/SettingsBox";
 import { TaskBar } from "../../../components/TaskBar";
+import { fakeApiInfos, fakeApiTypeOfAnimals } from "../../../utils/fakeAPi";
 import { Container, Content } from "../styles";
+
+interface SelectAnimalProps {
+  setState: React.Dispatch<React.SetStateAction<number>>;
+}
+
+const SelectAnimal = ({ setState }: SelectAnimalProps) => {
+  return (
+    <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+      <InputLabel id="demo-simple-select-standard-label">Especie</InputLabel>
+      <Select
+        labelId="demo-s imple-select-helper-label"
+        id="demo-simple-select-helper"
+        label="Especie do animal"
+        onChange={(e: any) => {
+          setState(e.target.value);
+        }}
+      >
+        <MenuItem value={0}>
+          <em>Todos</em>
+        </MenuItem>
+        {fakeApiTypeOfAnimals.types.map((item) => (
+          <MenuItem value={item.id}>
+            <em>{item.name} </em>
+          </MenuItem>
+        ))}
+      </Select>
+    </FormControl>
+  );
+};
+
 //ESSA FUNCAO RETORNA A PAGINA HOME DO DASHBOARD
 export const Home: React.FC = () => {
-  const test =
-    "Slash completou a formação clássica do Guns N' Roses em 1986 e, no ano seguinte, o grupo lançou seu primeiro disco, Appetite for Destruction, que não teve nenhum grande impacto inicial, mas acabou ganhando grande popularidade com o tempo, transformando-se em um sucesso de vendas e consolidando a carreira do grupo. Em 1991, o conjunto lança seu novo disco dividido em duas partes, Use Your Illusion I e Use Your Illusion II, e apesar dos álbuns terem atingido grande sucesso, o relacionamento de Slash com o vocalista Axl Rose se deteriorou com o passar dos anos e o guitarrista deixou o grupo em 1996.";
+  const [animalInformation, setAnimalInformation] = useState(0);
+
+  const InformationsContainer = fakeApiInfos.infos
+    .filter((val) => {
+      if (animalInformation == 0) {
+        return val;
+      } else if (animalInformation == val.type_of_animal) {
+        return val;
+      }
+    })
+    .map((item) => (
+      <InformationItem
+        type_of_animal={item.type_of_animal}
+        subtitle={item.subTitle}
+        contentText={item.contentText}
+      />
+    ));
   return (
     <Container>
       <Header label="Home" />
       <TaskBar />
       <Content>
         <div id="setting-box">
-          <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-            <InputLabel id="demo-simple-select-standard-label">Age</InputLabel>
-            <Select
-              labelId="demo-simple-select-helper-label"
-              id="demo-simple-select-helper"
-              label="Especie do animal"
-              onChange={() => {}}
-            >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
-            </Select>
-          </FormControl>
-
+          <SelectAnimal setState={setAnimalInformation} />
           <SettingBox />
         </div>
-        <InformationItem
-          type_of_animal={1}
-          subtitle="Test"
-          contentText={test}
-        />
-        <InformationItem
-          type_of_animal={3}
-          subtitle="Test"
-          contentText={test}
-        />
-        <InformationItem
-          type_of_animal={2}
-          subtitle="Test"
-          contentText={test}
-        />
-        <InformationItem
-          type_of_animal={4}
-          subtitle="Test"
-          contentText={test}
-        />
+        {InformationsContainer}
       </Content>
     </Container>
   );

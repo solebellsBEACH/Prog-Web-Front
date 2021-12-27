@@ -15,7 +15,7 @@ export const Register = () => {
   //FUNCAO DE QUANDO CLICAMOS NO BOTAO DE LOG IN
   const handleLogIn = () => {
     try {
-      api.post("/user", { email: email, ausername: name, password: password });
+      api.post("/user", { email: email, username: name, password: password });
     } catch (error) {
       console.log("error");
     }
