@@ -55,6 +55,20 @@ export const SettingBox: React.FC = () => {
         </MenuItem>
         <MenuItem
           onClick={() => {
+            navigate("/adoption");
+          }}
+        >
+          Sistema de Adoção
+        </MenuItem>
+        <MenuItem
+          onClick={() => {
+            navigate("/new-animal");
+          }}
+        >
+          Novo animal
+        </MenuItem>
+        <MenuItem
+          onClick={() => {
             navigate("/");
           }}
         >

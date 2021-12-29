@@ -9,7 +9,7 @@ interface IHeaderProps {
 export const Header = ({ label }: IHeaderProps) => {
   return (
     <Container>
-      <Content>Mel - Adocoes e cuidados</Content>
+      <Content>Mel - Adoções e cuidados</Content>
       <PageLabel>{label}</PageLabel>
     </Container>
   );

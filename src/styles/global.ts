@@ -37,8 +37,10 @@ export const GlobalStyle = createGlobalStyle`
 
         .standard-input {
             width:60% ;
+            
         }
 
+        
 .formik-form{
     display: flex;
     flex-direction: row;

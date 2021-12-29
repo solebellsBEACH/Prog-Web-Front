@@ -1,3 +1,4 @@
+import { Slider } from "@material-ui/core";
 import styled from "styled-components";
 
 export const AnimalLogo = styled.div`
@@ -9,3 +10,5 @@ export const AnimalLogo = styled.div`
   justify-content: center;
   border-radius: 100%;
 `;
+
+export const SliderStyles = styled(Slider)``;
