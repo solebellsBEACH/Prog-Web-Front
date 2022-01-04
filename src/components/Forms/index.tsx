@@ -6,16 +6,18 @@ import {
   Select,
   TextField,
 } from "@material-ui/core";
+
 import { Subtitle, Content, Label } from "./styles";
 import { SliderStyles as Slider } from "../styles";
 import { fakeApiTypeOfAnimals } from "../../utils/fakeAPi";
 import { useState } from "react";
 
 interface SelectAnimalProps {
+  state: number;
   setState: React.Dispatch<React.SetStateAction<number>>;
 }
-const SelectAnimal = ({ setState }: SelectAnimalProps) => {
-  const MenuItensContainer = fakeApiTypeOfAnimals.types.map((item) => (
+const SelectAnimal = ({ setState, state }: SelectAnimalProps) => {
+  const MenuItensContainer = fakeApiTypeOfAnimals.types.map((item, index) => (
     <MenuItem value={item.id}>
       <em>{item.name} </em>
     </MenuItem>
@@ -29,7 +31,6 @@ const SelectAnimal = ({ setState }: SelectAnimalProps) => {
         id="demo-simple-select-helper"
         label="Especie do animal"
         onChange={(e: any) => {
-          console.log(e.target.value);
           setState(e.target.value);
         }}
       >
@@ -41,6 +42,7 @@ const SelectAnimal = ({ setState }: SelectAnimalProps) => {
 
 export const AnimalForm = () => {
   const [type_of_animalState, setType_of_animal] = useState(0);
+  console.log();
   const [form, setForm] = useState({
     name: "",
     breed: "",
@@ -63,7 +65,10 @@ export const AnimalForm = () => {
             setForm({ ...form, name: e.target.value });
           }}
         />
-        <SelectAnimal setState={setType_of_animal} />
+        <SelectAnimal
+          setState={setType_of_animal}
+          state={type_of_animalState}
+        />
         <TextField
           className="text-field"
           id="outlined-basic"
