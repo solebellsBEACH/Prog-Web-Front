@@ -4,14 +4,15 @@ import { IoMdBook } from "react-icons/io";
 import { FaHandHoldingHeart } from "react-icons/fa";
 import { ImCheckmark2 } from "react-icons/im";
 import { useNavigate } from "react-router-dom";
+import { GiDogBowl } from "react-icons/gi";
 //PEGA AS PROPS DO ELEMENTO
-interface TaskBoxProps {
+interface ITaskBoxProps {
   label: string;
   callBackFunct: () => void;
   icon: any;
 }
 
-const TaskBox = ({ label, callBackFunct, icon }: TaskBoxProps) => {
+const TaskBox = ({ label, callBackFunct, icon }: ITaskBoxProps) => {
   return (
     <ContainerTaskBox>
       <ContainerIconBox>{icon}</ContainerIconBox>
@@ -30,6 +31,13 @@ export const TaskBar = () => {
         label="Informações Gerais"
         callBackFunct={() => {}}
         icon={<IoMdBook size={45} />}
+      />
+      <TaskBox
+        label="Novo animal"
+        callBackFunct={() => {
+          navigate("/new-animal");
+        }}
+        icon={<GiDogBowl size={45} />}
       />
       <TaskBox
         label="Sistema de adoção"

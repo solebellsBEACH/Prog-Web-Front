@@ -15,6 +15,7 @@ export const SettingBox: React.FC = () => {
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -50,14 +51,28 @@ export const SettingBox: React.FC = () => {
             navigate("/dashboard");
           }}
         >
-          Home
+          Informações Gerais
+        </MenuItem>
+        <MenuItem
+          onClick={() => {
+            navigate("/adoption");
+          }}
+        >
+          Sistema de Adoção
+        </MenuItem>
+        <MenuItem
+          onClick={() => {
+            navigate("/new-animal");
+          }}
+        >
+          Novo animal
         </MenuItem>
         <MenuItem
           onClick={() => {
             navigate("/");
           }}
         >
-          Home
+          Logout
         </MenuItem>
       </Menu>
     </div>

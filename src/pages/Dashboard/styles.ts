@@ -39,10 +39,6 @@ export const Content = styled.div`
     margin-top: 1vh;
     margin-left: 2vw;
     margin-bottom: 2vh;
-
-    #outlined-basic {
-      width: 200px;
-    }
   }
 `;
 

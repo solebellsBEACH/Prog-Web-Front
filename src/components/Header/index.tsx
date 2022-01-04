@@ -2,14 +2,14 @@ import React from "react";
 import { Container, Content, PageLabel } from "./styles";
 
 //REPRESENTA A PROP NECESSARIA DO COMPONENTE, NESSE CASO SÓ O NOME DA PAGINA
-interface HeaderProps {
+interface IHeaderProps {
   label: string;
 }
 
-export const Header = ({ label }: HeaderProps) => {
+export const Header = ({ label }: IHeaderProps) => {
   return (
     <Container>
-      <Content>Mel - Adocoes e cuidados</Content>
+      <Content>Mel - Adoções e cuidados</Content>
       <PageLabel>{label}</PageLabel>
     </Container>
   );
