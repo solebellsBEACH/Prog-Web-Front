@@ -2,6 +2,7 @@ import { Button } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import Swal from "sweetalert2";
 import { api } from "../../../utils/api/api";
 import { Container, Content, LinkComponent, Subtitle } from "../styles";
 
@@ -13,8 +14,15 @@ export const Login = () => {
   const navigate = useNavigate();
 
   const postSessionAndToDashboard = () => {
-    api.post("session", { email: state.email, password: state.password });
-    navigate("/dashboard");
+    api
+      .post("session", { email: state.email, password: state.password })
+      .then((req) => {
+        navigate("/dashboard");
+      })
+      .catch((e) => {
+        Swal.fire("Erro ao logar!", "Por favor, tente novamente!", "error");
+        console.log(e);
+      });
   };
   //FUNCAO DE QUANDO CLICAMOS NO BOTAO DE LOG IN
   const handleLogIn = () => {
@@ -50,6 +58,7 @@ export const Login = () => {
           label="Senha"
           name="password"
           variant="outlined"
+          type="password"
           onChange={(e) => {
             setState({ email: state.email, password: e.target.value });
           }}
