@@ -3,7 +3,7 @@ import TextField from "@material-ui/core/TextField";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import Swal from "sweetalert2";
-import { api } from "../../../utils/api/api";
+import { api, setAuthToken } from "../../../utils/api/api";
 import { Container, Content, LinkComponent, Subtitle } from "../styles";
 
 // AQUI TEMOS A FUNCAO QUE GERA A PAGINA DE LOG IN
@@ -18,6 +18,7 @@ export const Login = () => {
       api
         .post("session", { email: state.email, password: state.password })
         .then((req) => {
+          setAuthToken(req.data.token);
           navigate("/dashboard");
         })
         .catch((e) => {
