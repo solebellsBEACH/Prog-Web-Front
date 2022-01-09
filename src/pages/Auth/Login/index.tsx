@@ -14,15 +14,19 @@ export const Login = () => {
   const navigate = useNavigate();
 
   const postSessionAndToDashboard = () => {
-    api
-      .post("session", { email: state.email, password: state.password })
-      .then((req) => {
-        navigate("/dashboard");
-      })
-      .catch((e) => {
-        Swal.fire("Erro ao logar!", "Por favor, tente novamente!", "error");
-        console.log(e);
-      });
+    if (state.email != "" && state.password != "") {
+      api
+        .post("session", { email: state.email, password: state.password })
+        .then((req) => {
+          navigate("/dashboard");
+        })
+        .catch((e) => {
+          Swal.fire("Erro ao logar!", "Por favor, tente novamente!", "error");
+          console.log(e);
+        });
+    } else {
+      Swal.fire("Erro ao criar usuário!", "Não envie campos vazios!", "error");
+    }
   };
   //FUNCAO DE QUANDO CLICAMOS NO BOTAO DE LOG IN
   const handleLogIn = () => {
