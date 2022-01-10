@@ -46,11 +46,6 @@ export const TaskBar = () => {
           navigate("/adoption");
         }}
       />
-      <TaskBox
-        label="Teste auxiliar"
-        icon={<ImCheckmark2 size={45} />}
-        callBackFunct={() => {}}
-      />
     </Container>
   );
 };

@@ -9,49 +9,70 @@ import {
 
 import { Subtitle, Content, Label } from "./styles";
 import { SliderStyles as Slider } from "../styles";
-import { fakeApiTypeOfAnimals } from "../../utils/fakeAPi";
-import { useState } from "react";
-
-interface SelectAnimalProps {
-  state: number;
-  setState: React.Dispatch<React.SetStateAction<number>>;
-}
-const SelectAnimal = ({ setState, state }: SelectAnimalProps) => {
-  const MenuItensContainer = fakeApiTypeOfAnimals.types.map((item, index) => (
-    <MenuItem value={item.id}>
-      <em>{item.name} </em>
-    </MenuItem>
-  ));
-
-  return (
-    <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-      <InputLabel id="demo-simple-select-standard-label">Especie</InputLabel>
-      <Select
-        labelId="demo-s imple-select-helper-label"
-        id="demo-simple-select-helper"
-        label="Especie do animal"
-        onChange={(e: any) => {
-          setState(e.target.value);
-        }}
-      >
-        {MenuItensContainer}
-      </Select>
-    </FormControl>
-  );
-};
+import { useEffect, useState } from "react";
+import { TypeAnimalIdResponse } from "../../utils/Models";
+import { api, config } from "../../utils/api/api";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 export const AnimalForm = () => {
   const [type_of_animalState, setType_of_animal] = useState(0);
-  console.log();
+  const navigate = useNavigate();
+
   const [form, setForm] = useState({
     name: "",
     breed: "",
-    age: 0,
+    age: 0.5,
     description: "",
     city: "",
-    type_of_animal: type_of_animalState,
+    gender: "M",
+    type_animal_id: type_of_animalState,
   });
 
+  const [type_animals_id, setType_animals_id] = useState<
+    TypeAnimalIdResponse[]
+  >([]);
+
+  useEffect(() => {
+    getTypeAnimalId();
+  }, []);
+  const getTypeAnimalId = async () => {
+    const response = await api.get("/typeanimal", config);
+    setType_animals_id(response.data);
+  };
+
+  const MenuItensContainer = type_animals_id.map((item, index) => (
+    <MenuItem value={item.id}>
+      <em>{item.type} </em>
+    </MenuItem>
+  ));
+  const handleRegisterButton = () => {
+    if (
+      form.name != "" &&
+      form.breed != "" &&
+      form.description != "" &&
+      form.city != "" &&
+      form.type_animal_id != 0
+    ) {
+      api
+        .post("/animal", form, config)
+        .then((response) => {
+          console.log(response);
+          Swal.fire("Animal criado com sucesso!", "", "success");
+          navigate("/dashboard");
+        })
+        .catch((e) => {
+          console.log(e);
+          Swal.fire(
+            "Erro ao criar animal!",
+            "Tente novamente mais tarde!",
+            "error"
+          );
+        });
+    } else {
+      Swal.fire("Erro ao criar animal!", "Não envie campos vazios!", "error");
+    }
+  };
   return (
     <>
       <Subtitle>Preencha os dados para cadastrar um novo animal</Subtitle>
@@ -65,10 +86,20 @@ export const AnimalForm = () => {
             setForm({ ...form, name: e.target.value });
           }}
         />
-        <SelectAnimal
-          setState={setType_of_animal}
-          state={type_of_animalState}
-        />
+        <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+          <InputLabel id="demo-simple-select-standard-label">
+            Especie
+          </InputLabel>
+          <Select
+            labelId="demo-s imple-select-helper-label"
+            id="demo-simple-select-helper"
+            onChange={(e: any) => {
+              setForm({ ...form, type_animal_id: e.target.value });
+            }}
+          >
+            {MenuItensContainer}
+          </Select>
+        </FormControl>
         <TextField
           className="text-field"
           id="outlined-basic"
@@ -104,6 +135,26 @@ export const AnimalForm = () => {
             setForm({ ...form, description: e.target.value });
           }}
         />
+
+        <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+          <InputLabel id="demo-simple-select-standard-label">Gênero</InputLabel>
+          <Select
+            labelId="demo-s imple-select-helper-label"
+            id="demo-simple-select-helper"
+            label="Gênero do animal"
+            onChange={(e: any) => {
+              setForm({ ...form, gender: e.target.value });
+            }}
+          >
+            <MenuItem value={"M"}>
+              <em>Macho</em>
+            </MenuItem>
+            <MenuItem value={"F"}>
+              <em>Fêmea</em>
+            </MenuItem>
+          </Select>
+        </FormControl>
+
         <TextField
           className="text-field"
           id="outlined-basic"
@@ -114,9 +165,7 @@ export const AnimalForm = () => {
           }}
         />
         <Button
-          onClick={() => {
-            console.log(form);
-          }}
+          onClick={handleRegisterButton}
           color="secondary"
           variant="contained"
         >

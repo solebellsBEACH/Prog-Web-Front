@@ -13,4 +13,10 @@ export interface IAnimal {
   age: number;
   type_animal_id: number;
   gender: "M" | "F";
+  localization: string;
+}
+
+export interface TypeAnimalIdResponse {
+  id: number;
+  type: string;
 }
