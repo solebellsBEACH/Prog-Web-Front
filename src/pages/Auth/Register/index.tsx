@@ -69,6 +69,7 @@ export const Register = () => {
           className="text-field"
           label="Senha"
           name="password"
+          type="password"
           variant="outlined"
           onChange={(e) => {
             setPassword(e.target.value);
