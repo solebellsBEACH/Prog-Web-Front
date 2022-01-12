@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  height: 62vh;
-  width: 38vw;
+  height: 600px;
+  width: 700px;
+
+  margin: 100px;
   background: var(--Background);
   border-radius: 10px;
   display: flex;
@@ -10,8 +12,8 @@ export const Container = styled.div`
   align-items: center;
 `;
 export const Content = styled.div`
-  height: 55vh;
-  width: 35vw;
+  height: 550px;
+  width: 660px;
   background: white;
   border-radius: 10px;
   display: flex;

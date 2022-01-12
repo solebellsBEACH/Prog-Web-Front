@@ -15,6 +15,7 @@ import { IoMdTrash } from "react-icons/io";
 import { BsPencilSquare } from "react-icons/bs";
 
 import { api, config } from "../../utils/api/api";
+import Swal from "sweetalert2";
 
 interface AnimalModalProps {
   id: number;
@@ -26,6 +27,7 @@ interface AnimalModalProps {
   gender: "M" | "F";
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  getAnimals: () => Promise<void>;
 }
 
 export default function AnimalModal({
@@ -38,16 +40,40 @@ export default function AnimalModal({
   open,
   setOpen,
   localization,
+  getAnimals,
 }: AnimalModalProps) {
   const [typeAnimals, setTypeAnimals] = useState<
     { id: number; type: string }[]
   >([]);
+
+  const [form, setForm] = useState({
+    name: "",
+    breed: "",
+    age: 0.5,
+    description: "",
+    city: "",
+    gender: "M",
+    type_animal_id: 0,
+  });
+
   const handleOpen = () => {
     setOpen(true);
   };
   const handleClose = () => {
     setOpen(false);
   };
+
+  useEffect(() => {
+    setForm({
+      ...form,
+      name: name,
+      breed: breed,
+      age: age,
+      city: localization,
+      gender: gender,
+      type_animal_id: species,
+    });
+  }, [name]);
 
   useEffect(() => {
     getTypeAnimals();
@@ -58,7 +84,6 @@ export default function AnimalModal({
     setTypeAnimals(res.data);
   };
 
-  const type_of_animal: number = 2;
   let icon = <MdPets size={95} />;
   switch (species) {
     case 1:
@@ -75,6 +100,51 @@ export default function AnimalModal({
       icon = <GiHummingbird size={95} />;
       break;
   }
+
+  const callBackEditAnimal = () => {
+    api
+      .put(`animal/${id}`, form, config)
+      .then(() => {
+        handleClose();
+        Swal.fire({
+          icon: "success",
+          title: "Okay !",
+          text: "Animal editado com sucesso!",
+        });
+        getAnimals();
+      })
+      .catch(() => {
+        handleClose();
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Algo deu errado, por favor tente novamente...",
+        });
+      });
+  };
+
+  const callBackDeleteAnimal = () => {
+    api
+      .delete(`animal/${id}`, config)
+      .then(() => {
+        handleClose();
+        Swal.fire({
+          icon: "success",
+          title: "Okay !",
+          text: "Animal deletado com sucesso!",
+        });
+        getAnimals();
+      })
+      .catch(() => {
+        handleClose();
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Algo deu errado, por favor tente novamente...",
+        });
+      });
+  };
+
   return (
     <div>
       <Modal
@@ -82,6 +152,7 @@ export default function AnimalModal({
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          margin: "100px",
         }}
         open={open}
         onClose={handleClose}
@@ -92,11 +163,17 @@ export default function AnimalModal({
           <Content>
             <ContentLeft>
               <AnimalPhotoBox>{icon}</AnimalPhotoBox>
-              <ActionIcon style={{ backgroundColor: "red" }}>
+              <ActionIcon
+                onClick={callBackDeleteAnimal}
+                style={{ backgroundColor: "red" }}
+              >
                 <IoMdTrash size={70} />
               </ActionIcon>
 
-              <ActionIcon style={{ backgroundColor: "pink" }}>
+              <ActionIcon
+                onClick={callBackEditAnimal}
+                style={{ backgroundColor: "pink" }}
+              >
                 <BsPencilSquare size={65} />
               </ActionIcon>
             </ContentLeft>
@@ -106,6 +183,9 @@ export default function AnimalModal({
                   id="outlined-basic"
                   label="Nome"
                   variant="outlined"
+                  onChange={(e: any) => {
+                    setForm({ ...form, name: e.target.value });
+                  }}
                   defaultValue={name}
                 />
               </div>
@@ -115,6 +195,9 @@ export default function AnimalModal({
                   id="outlined-basic"
                   label="Raça"
                   variant="outlined"
+                  onChange={(e: any) => {
+                    setForm({ ...form, breed: e.target.value });
+                  }}
                   defaultValue={breed}
                 />
               </div>
@@ -122,6 +205,9 @@ export default function AnimalModal({
                 <TextField
                   label="Idade"
                   variant="outlined"
+                  onChange={(e: any) => {
+                    setForm({ ...form, age: e.target.value });
+                  }}
                   defaultValue={age}
                 />
               </div>
@@ -130,6 +216,9 @@ export default function AnimalModal({
                   id="outlined-basic"
                   label="Localização"
                   variant="outlined"
+                  onChange={(e: any) => {
+                    setForm({ ...form, city: e.target.value });
+                  }}
                   defaultValue={localization}
                 />
               </div>
@@ -138,6 +227,9 @@ export default function AnimalModal({
                   id="outlined-basic"
                   label="Especie"
                   variant="outlined"
+                  onChange={(e: any) => {
+                    setForm({ ...form, type_animal_id: e.target.value });
+                  }}
                   defaultValue={species}
                 />
               </div>
@@ -146,7 +238,9 @@ export default function AnimalModal({
                   labelId="demo-s imple-select-helper-label"
                   id="demo-simple-select-helper"
                   label="Gênero do animal"
-                  onChange={(e: any) => {}}
+                  onChange={(e: any) => {
+                    setForm({ ...form, gender: e.target.value });
+                  }}
                   value={gender}
                 >
                   <MenuItem value={"M"}>
