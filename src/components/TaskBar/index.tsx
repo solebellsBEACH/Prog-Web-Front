@@ -2,7 +2,7 @@ import { Container } from "./styles";
 import { ContainerIconBox, ContainerTaskBox, LabelBox } from "./TaskBoxStyles";
 import { IoMdBook } from "react-icons/io";
 import { FaHandHoldingHeart } from "react-icons/fa";
-import { ImCheckmark2 } from "react-icons/im";
+import { BsCloudDownload } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { GiDogBowl } from "react-icons/gi";
 //PEGA AS PROPS DO ELEMENTO
@@ -46,6 +46,14 @@ export const TaskBar = () => {
           navigate("/adoption");
         }}
       />
+      <ContainerTaskBox>
+        <ContainerIconBox>{<BsCloudDownload size={40} />}</ContainerIconBox>
+        <LabelBox>
+          <a href="public/testDownload.txt" download>
+            Sobre nós
+          </a>
+        </LabelBox>
+      </ContainerTaskBox>
     </Container>
   );
 };

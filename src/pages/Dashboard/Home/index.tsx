@@ -5,7 +5,6 @@ import { InformationItem } from "../../../components/InformationItem";
 import { SettingBox } from "../../../components/SettingsBox";
 import { TaskBar } from "../../../components/TaskBar";
 import { api, config } from "../../../utils/api/api";
-import { fakeApiInfos, fakeApiTypeOfAnimals } from "../../../utils/fakeAPi";
 import { IInformation } from "../../../utils/Models";
 import { Container, Content } from "../styles";
 
@@ -14,9 +13,22 @@ interface SelectAnimalProps {
 }
 
 const SelectAnimal = ({ setState }: SelectAnimalProps) => {
-  const MenuItensContainer = fakeApiTypeOfAnimals.types.map((item) => (
+  const [typeAnimals, setTypeAnimals] = useState<
+    { id: number; type: string }[]
+  >([]);
+
+  useEffect(() => {
+    getTypeAnimals();
+  }, []);
+
+  const getTypeAnimals = async () => {
+    const res = await api.get("/typeanimal", config);
+    setTypeAnimals(res.data);
+  };
+
+  const MenuItensContainer = typeAnimals.map((item) => (
     <MenuItem value={item.id}>
-      <em>{item.name} </em>
+      <em>{item.type} </em>
     </MenuItem>
   ));
 

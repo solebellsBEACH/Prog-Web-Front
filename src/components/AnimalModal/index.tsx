@@ -1,21 +1,23 @@
-import { Button, Modal } from "@material-ui/core";
+import { MenuItem, Modal, Select, TextField } from "@material-ui/core";
 import { useEffect, useState } from "react";
-import { AnimalLogo } from "../styles";
 import {
   Container,
   Content,
   ContentLeft,
   AnimalPhotoBox,
   ContentRight,
-  Subtitle,
-  TextField,
+  ActionIcon,
 } from "./styles";
 import { MdPets } from "react-icons/md";
 import { FaDog, FaCat } from "react-icons/fa";
 import { GiSeatedMouse, GiHummingbird } from "react-icons/gi";
+import { IoMdTrash } from "react-icons/io";
+import { BsPencilSquare } from "react-icons/bs";
+
 import { api, config } from "../../utils/api/api";
 
 interface AnimalModalProps {
+  id: number;
   name: string;
   breed: string;
   age: number;
@@ -27,6 +29,7 @@ interface AnimalModalProps {
 }
 
 export default function AnimalModal({
+  id,
   name,
   age,
   species,
@@ -89,22 +92,71 @@ export default function AnimalModal({
           <Content>
             <ContentLeft>
               <AnimalPhotoBox>{icon}</AnimalPhotoBox>
+              <ActionIcon style={{ backgroundColor: "red" }}>
+                <IoMdTrash size={70} />
+              </ActionIcon>
+
+              <ActionIcon style={{ backgroundColor: "pink" }}>
+                <BsPencilSquare size={65} />
+              </ActionIcon>
             </ContentLeft>
             <ContentRight>
-              <Subtitle>{name}</Subtitle>
-              <TextField>Raça: {breed} </TextField>
-              <TextField>Idade: {age} anos</TextField>
-              <TextField>Localização: {localization}</TextField>
-              <TextField>Especie: {species}l</TextField>
-              <TextField>
-                Gênero:
-                {() => {
-                  if (gender == "M") {
-                    return "Macho";
-                  }
-                  return "Femea";
-                }}
-              </TextField>
+              <div id="nameBox" className="textFieldStyled">
+                <TextField
+                  id="outlined-basic"
+                  label="Nome"
+                  variant="outlined"
+                  defaultValue={name}
+                />
+              </div>
+
+              <div className="textFieldStyled">
+                <TextField
+                  id="outlined-basic"
+                  label="Raça"
+                  variant="outlined"
+                  defaultValue={breed}
+                />
+              </div>
+              <div className="textFieldStyled">
+                <TextField
+                  label="Idade"
+                  variant="outlined"
+                  defaultValue={age}
+                />
+              </div>
+              <div className="textFieldStyled">
+                <TextField
+                  id="outlined-basic"
+                  label="Localização"
+                  variant="outlined"
+                  defaultValue={localization}
+                />
+              </div>
+              <div className="textFieldStyled">
+                <TextField
+                  id="outlined-basic"
+                  label="Especie"
+                  variant="outlined"
+                  defaultValue={species}
+                />
+              </div>
+              <div className="textFieldStyled">
+                <Select
+                  labelId="demo-s imple-select-helper-label"
+                  id="demo-simple-select-helper"
+                  label="Gênero do animal"
+                  onChange={(e: any) => {}}
+                  value={gender}
+                >
+                  <MenuItem value={"M"}>
+                    <em>Macho</em>
+                  </MenuItem>
+                  <MenuItem value={"F"}>
+                    <em>Fêmea</em>
+                  </MenuItem>
+                </Select>
+              </div>
             </ContentRight>
           </Content>
         </Container>

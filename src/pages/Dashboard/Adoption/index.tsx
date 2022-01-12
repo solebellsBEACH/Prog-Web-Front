@@ -83,6 +83,7 @@ export const Adoption: React.FC = () => {
           <SettingBox />
         </div>
         <AnimalModal
+          id={actualAnimal.id}
           name={actualAnimal.name}
           breed={actualAnimal.breed}
           age={actualAnimal.age}

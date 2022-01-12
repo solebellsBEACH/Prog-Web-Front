@@ -20,6 +20,8 @@ export const Content = styled.div`
 export const ContentLeft = styled.div`
   display: flex;
   align-items: top;
+  align-items: center;
+  flex-direction: column;
 `;
 export const AnimalPhotoBox = styled.div`
   height: 120px;
@@ -40,13 +42,30 @@ export const ContentRight = styled.div`
   border-radius: 10px;
   display: flex;
   flex-direction: column;
+
+  .textFieldStyled {
+    margin: 1vh 0 1vh 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #nameBox {
+    margin: 2vh 0 1vh 0;
+  }
 `;
-export const Subtitle = styled.h1`
-  font-size: 2.5rem;
-  margin: 1vw;
-  text-transform: uppercase;
-`;
-export const TextField = styled.h1`
-  font-size: 1.5rem;
-  margin: 1vw;
+
+export const ActionIcon = styled.div`
+  background: black;
+  height: 90px;
+  width: 90px;
+  margin-top: 3vh;
+  border-radius: 50%;
+  opacity: 0.6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    opacity: 1;
+  }
 `;
