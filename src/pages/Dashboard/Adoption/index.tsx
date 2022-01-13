@@ -1,9 +1,11 @@
-import { TextField } from "@material-ui/core";
-import { useState } from "react";
+import { Modal, TextField } from "@material-ui/core";
+import { useEffect, useState } from "react";
 import { AnimalItem } from "../../../components/AnimalItem";
+import AnimalModal from "../../../components/AnimalModal";
 import { Header } from "../../../components/Header";
 import { SettingBox } from "../../../components/SettingsBox";
-import { fakeApiAnimals } from "../../../utils/fakeAPi";
+import { api, config } from "../../../utils/api/api";
+import { IAnimal } from "../../../utils/Models";
 import { Container, Content } from "../styles";
 import { ContainerGrid } from "./styles";
 
@@ -11,9 +13,30 @@ export const Adoption: React.FC = () => {
   //ARMAZENA O ESTADO DE BUSCA
   const [searchState, setSearchState] = useState("");
   //ESSA FUNCAO RETORNA UM MAP E UM FILTER QUE MUDA QUANDO PESQUISA UM NOME EM FORMA DE COMPONENTE
-  const AnimalsBox = fakeApiAnimals.animals
+  const [animals, setAnimals] = useState<IAnimal[]>([]);
+
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [actualAnimal, setActualAnimal] = useState<IAnimal>({
+    id: 0,
+    name: "",
+    breed: "",
+    age: 0,
+    type_animal_id: 0,
+    gender: "M",
+    localization: "",
+  });
+
+  useEffect(() => {
+    getAnimals();
+  }, []);
+
+  const getAnimals = async () => {
+    const res = await api.get("/animal", config);
+    setAnimals(res.data);
+  };
+
+  const AnimalsBox = Object.values(animals)
     .filter((val) => {
-      console.log(val);
       if (searchState == "") {
         return val;
       } else if (val.name.toLowerCase().includes(searchState.toLowerCase())) {
@@ -21,12 +44,27 @@ export const Adoption: React.FC = () => {
       }
     })
     .map((item) => (
-      <AnimalItem
-        name={item.name}
-        breed={item.breed}
-        age={item.age}
-        type_of_animal={item.type_of_animal}
-      />
+      <div
+        onClick={() => {
+          setActualAnimal({
+            id: item.id,
+            name: item.name,
+            breed: item.breed,
+            age: item.age,
+            type_animal_id: item.type_animal_id,
+            gender: item.gender,
+            localization: "d",
+          });
+          setIsOpenModal(true);
+        }}
+      >
+        <AnimalItem
+          name={item.name}
+          breed={item.breed}
+          age={item.age}
+          type_of_animal={item.type_animal_id}
+        />
+      </div>
     ));
 
   return (
@@ -44,7 +82,18 @@ export const Adoption: React.FC = () => {
           />
           <SettingBox />
         </div>
-
+        <AnimalModal
+          getAnimals={getAnimals}
+          id={actualAnimal.id}
+          name={actualAnimal.name}
+          breed={actualAnimal.breed}
+          age={actualAnimal.age}
+          gender={actualAnimal.gender}
+          species={actualAnimal.type_animal_id}
+          open={isOpenModal}
+          setOpen={setIsOpenModal}
+          localization={actualAnimal.localization}
+        />
         <ContainerGrid>{AnimalsBox} </ContainerGrid>
       </Content>
     </Container>

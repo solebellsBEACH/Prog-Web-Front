@@ -2,6 +2,7 @@ import { Button } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import Swal from "sweetalert2";
 import { api } from "../../../utils/api/api";
 import { Container, Content, LinkComponent, Subtitle } from "../styles";
 // AQUI TEMOS A FUNCAO QUE GERA A PAGINA DE REGISTRO
@@ -14,10 +15,23 @@ export const Register = () => {
   const navigate = useNavigate();
   //FUNCAO DE QUANDO CLICAMOS NO BOTAO DE LOG IN
   const handleLogIn = () => {
-    try {
-      api.post("/user", { email: email, username: name, password: password });
-    } catch (error) {
-      console.log("error");
+    if (email != "" && password != "" && name != "") {
+      api
+        .post("user", { email: email, password: password, username: name })
+        .then((req) => {
+          Swal.fire("Usuário criado com sucesso!", "", "success");
+          navigate("/");
+        })
+        .catch((e) => {
+          Swal.fire(
+            "Erro ao criar usuário!",
+            "Por favor, tente novamente!",
+            "error"
+          );
+          console.log(e);
+        });
+    } else {
+      Swal.fire("Erro ao criar usuário!", "Não envie campos vazios!", "error");
     }
   };
 
@@ -55,6 +69,7 @@ export const Register = () => {
           className="text-field"
           label="Senha"
           name="password"
+          type="password"
           variant="outlined"
           onChange={(e) => {
             setPassword(e.target.value);

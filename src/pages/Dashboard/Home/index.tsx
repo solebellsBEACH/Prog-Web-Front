@@ -1,10 +1,11 @@
 import { FormControl, InputLabel, MenuItem, Select } from "@material-ui/core";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Header } from "../../../components/Header";
 import { InformationItem } from "../../../components/InformationItem";
 import { SettingBox } from "../../../components/SettingsBox";
 import { TaskBar } from "../../../components/TaskBar";
-import { fakeApiInfos, fakeApiTypeOfAnimals } from "../../../utils/fakeAPi";
+import { api, config } from "../../../utils/api/api";
+import { IInformation } from "../../../utils/Models";
 import { Container, Content } from "../styles";
 
 interface SelectAnimalProps {
@@ -12,9 +13,22 @@ interface SelectAnimalProps {
 }
 
 const SelectAnimal = ({ setState }: SelectAnimalProps) => {
-  const MenuItensContainer = fakeApiTypeOfAnimals.types.map((item) => (
+  const [typeAnimals, setTypeAnimals] = useState<
+    { id: number; type: string }[]
+  >([]);
+
+  useEffect(() => {
+    getTypeAnimals();
+  }, []);
+
+  const getTypeAnimals = async () => {
+    const res = await api.get("/typeanimal", config);
+    setTypeAnimals(res.data);
+  };
+
+  const MenuItensContainer = typeAnimals.map((item) => (
     <MenuItem value={item.id}>
-      <em>{item.name} </em>
+      <em>{item.type} </em>
     </MenuItem>
   ));
 
@@ -41,22 +55,32 @@ const SelectAnimal = ({ setState }: SelectAnimalProps) => {
 //ESSA FUNCAO RETORNA A PAGINA HOME DO DASHBOARD
 export const Home: React.FC = () => {
   const [animalInformationId, setAnimalInformationId] = useState(0);
+  const [informations, setInformations] = useState<IInformation[]>([]);
+  useEffect(() => {
+    getInformations();
+  }, []);
 
-  const InformationsContainer = fakeApiInfos.infos
-    .filter((val) => {
-      if (animalInformationId == 0) {
-        return val;
-      } else if (animalInformationId == val.type_of_animal) {
-        return val;
-      }
-    })
-    .map((item) => (
-      <InformationItem
-        type_of_animal={item.type_of_animal}
-        subtitle={item.subTitle}
-        contentText={item.contentText}
-      />
-    ));
+  const getInformations = async () => {
+    const response = await api.get("/information", config);
+    setInformations(response.data);
+  };
+  const renderInformations = (animalInformationId: number | null) => {
+    return informations
+      .filter((val) => {
+        if (animalInformationId == 0) {
+          return val;
+        } else if (animalInformationId == val.type_animal_id) {
+          return val;
+        }
+      })
+      .map((item) => (
+        <InformationItem
+          type_of_animal={item.type_animal_id}
+          subtitle={item.title}
+          contentText={item.text}
+        />
+      ));
+  };
 
   return (
     <Container>
@@ -67,7 +91,7 @@ export const Home: React.FC = () => {
           <SelectAnimal setState={setAnimalInformationId} />
           <SettingBox />
         </div>
-        {InformationsContainer}
+        {renderInformations(animalInformationId)}
       </Content>
     </Container>
   );

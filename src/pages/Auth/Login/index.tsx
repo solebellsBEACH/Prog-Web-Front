@@ -2,7 +2,8 @@ import { Button } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { api } from "../../../utils/api/api";
+import Swal from "sweetalert2";
+import { api, setAuthToken } from "../../../utils/api/api";
 import { Container, Content, LinkComponent, Subtitle } from "../styles";
 
 // AQUI TEMOS A FUNCAO QUE GERA A PAGINA DE LOG IN
@@ -13,10 +14,19 @@ export const Login = () => {
   const navigate = useNavigate();
 
   const postSessionAndToDashboard = () => {
-    try {
-      api.post("session", { email: state.email, password: state.password });
-    } catch (error) {
-      console.log(error);
+    if (state.email != "" && state.password != "") {
+      api
+        .post("session", { email: state.email, password: state.password })
+        .then((req) => {
+          setAuthToken(req.data.token);
+          navigate("/dashboard");
+        })
+        .catch((e) => {
+          Swal.fire("Erro ao logar!", "Por favor, tente novamente!", "error");
+          console.log(e);
+        });
+    } else {
+      Swal.fire("Erro ao criar usuário!", "Não envie campos vazios!", "error");
     }
   };
   //FUNCAO DE QUANDO CLICAMOS NO BOTAO DE LOG IN
@@ -53,6 +63,7 @@ export const Login = () => {
           label="Senha"
           name="password"
           variant="outlined"
+          type="password"
           onChange={(e) => {
             setState({ email: state.email, password: e.target.value });
           }}

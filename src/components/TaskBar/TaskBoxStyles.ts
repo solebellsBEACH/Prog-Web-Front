@@ -37,4 +37,10 @@ export const LabelBox = styled.div`
   p:hover {
     color: var(--Purple);
   }
+  a {
+    color: black;
+  }
+  a:hover {
+    color: var(--Purple);
+  }
 `;

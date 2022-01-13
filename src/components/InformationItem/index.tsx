@@ -12,7 +12,7 @@ import { FaDog, FaCat } from "react-icons/fa";
 import { GiSeatedMouse, GiHummingbird } from "react-icons/gi";
 
 interface IInformationItemProps {
-  type_of_animal: number;
+  type_of_animal: number | null;
   subtitle: string;
   contentText: string;
 }
