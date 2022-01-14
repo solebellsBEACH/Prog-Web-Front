@@ -164,13 +164,25 @@ export const AnimalForm = () => {
             setForm({ ...form, city: e.target.value });
           }}
         />
-        <Button
-          onClick={handleRegisterButton}
-          color="secondary"
-          variant="contained"
-        >
-          Cadastrar
-        </Button>
+        <div style={{ display: "flex", marginTop: "20px" }}>
+          <Button
+            onClick={() => {
+              navigate("/adoption");
+            }}
+            color="secondary"
+            variant="contained"
+            style={{ marginRight: "20px" }}
+          >
+            Consultar
+          </Button>
+          <Button
+            onClick={handleRegisterButton}
+            color="secondary"
+            variant="contained"
+          >
+            Cadastrar
+          </Button>
+        </div>
       </Content>
     </>
   );
