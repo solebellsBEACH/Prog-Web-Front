@@ -1,4 +1,10 @@
-import { Button } from "@material-ui/core";
+import {
+  Button,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+} from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import { useState } from "react";
 import { useNavigate } from "react-router";
@@ -64,7 +70,20 @@ export const Register = () => {
             setName(e.target.value);
           }}
         />
-
+        <FormControl>
+          <InputLabel id="demo-simple-select-label">Tipo de Usuário</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            label="Tipo de Usuário"
+            className="text-field"
+            onChange={() => {}}
+          >
+            <MenuItem value={1}>Doador</MenuItem>
+            <MenuItem value={2}>Donatário</MenuItem>
+            <MenuItem value={0}>Ambos</MenuItem>
+          </Select>
+        </FormControl>
         <TextField
           id="outlined-basic"
           className="text-field"

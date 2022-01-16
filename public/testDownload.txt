@@ -1,1 +1,6 @@
-TESTE DE DOWNLOAD
+Mel - Adoção e Cuidados é uma plataforma web/mobile que facilita a vida de muitas pessoas que têm e que virão a ter animais domésticos (cães,gatos,calopsita e hamsters).
+MEL é a sigla da junção dos criadores deste lindo site (Maria Eduarda Tomaz, Estefany Gonçalves e Lucas Xavier).
+
+Nosso sistema permite o usuário utilizar um teste que o auxilie em sua escolha para o animal ideal; 	Disponibilidade de informações de cuidados primordiais para animais domésticos e um sistema de adoção destinado à Grande Vitória.
+
+Com isso, o nosso site ajuda os animais, resolve a maioria dos problemas nos processos de adoção, melhora a divulgação de animais perdidos e incentiva as pessoas a tratarem/cuidarem de seus petz de uma forma mehor.

@@ -4,6 +4,7 @@ import { Register } from "./pages/Auth/Register";
 import { Adoption } from "./pages/Dashboard/Adoption";
 import { Home } from "./pages/Dashboard/Home";
 import { RegisterNewAnimal } from "./pages/Dashboard/RegisterNewAnimal";
+import { TesteAuxiliar } from "./pages/Dashboard/TesteAuxiliar";
 //ESSE ARQUIVO É RESPONSAVEL POR CRIAR AS ROTAS E OS PATHS DA APLICACAO
 export const RoutesComponent: React.FC = () => {
   return (
@@ -14,6 +15,7 @@ export const RoutesComponent: React.FC = () => {
         <Route path="/dashboard" element={<Home />} />
         <Route path="/adoption" element={<Adoption />} />
         <Route path="/new-animal" element={<RegisterNewAnimal />} />
+        <Route path="/teste-auxiliar" element={<TesteAuxiliar />} />
       </Routes>
     </Router>
   );

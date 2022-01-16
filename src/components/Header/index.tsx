@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { api, config } from "../../utils/api/api";
 import { Container, Content, PageLabel } from "./styles";
 
@@ -12,12 +13,14 @@ export const Header = ({ label }: IHeaderProps) => {
     {
       id: number;
       username: string;
+      type_user_id: number;
     }[]
   >([]);
 
   useEffect(() => {
     getActualUser();
   }, []);
+  const navigate = useNavigate();
 
   const getActualUser = async () => {
     const res = await api.get("actualUser", config);

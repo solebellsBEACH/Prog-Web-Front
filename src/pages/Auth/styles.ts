@@ -16,13 +16,13 @@ export const Container = styled.div`
 
   .text-field {
     margin: 1vh 0 1vh 0;
-    width: 70%;
+    width: 30vw;
   }
 `;
 
 export const Content = styled.div`
   width: 50vw;
-  min-height: 50vh;
+  min-height: 55vh;
   height: auto;
   background: var(--White);
   display: flex;

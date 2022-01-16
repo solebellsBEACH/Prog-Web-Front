@@ -1,6 +1,6 @@
 import { Container } from "./styles";
 import { ContainerIconBox, ContainerTaskBox, LabelBox } from "./TaskBoxStyles";
-import { IoMdBook } from "react-icons/io";
+import { IoMdBook, IoMdInformationCircle } from "react-icons/io";
 import { FaHandHoldingHeart } from "react-icons/fa";
 import { BsCloudDownload } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
@@ -43,6 +43,13 @@ export const TaskBar = () => {
           navigate("/new-animal");
         }}
         icon={<GiDogBowl size={45} />}
+      />
+      <TaskBox
+        label="Teste Auxiliar"
+        icon={<IoMdInformationCircle size={40} />}
+        callBackFunct={() => {
+          navigate("/teste-auxiliar");
+        }}
       />
       <TaskBox
         label="Sistema de adoção"

@@ -8,9 +8,7 @@ import { SettingBox } from "../../../components/SettingsBox";
 import { TaskBar } from "../../../components/TaskBar";
 import { api, config } from "../../../utils/api/api";
 import { IAnimal } from "../../../utils/Models";
-import { Container, Content } from "../styles";
-import { ContainerGrid } from "./styles";
-
+import { Container, ContainerGrid, Content } from "../styles";
 export const Adoption: React.FC = () => {
   const navigate = useNavigate();
 
@@ -59,6 +57,7 @@ export const Adoption: React.FC = () => {
             gender: item.gender,
             city_loc: item.city_loc,
           });
+
           setIsOpenModal(true);
         }}
       >

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Modal from "react-modal";
 export const Container = styled.div`
   background: var(--Background);
   min-height: 100vh;
@@ -49,4 +48,11 @@ export const Subtitle = styled.div`
   background: none;
   color: var(--Blue1);
   margin-bottom: 3vh;
+`;
+
+export const ContainerGrid = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: space-between;
 `;

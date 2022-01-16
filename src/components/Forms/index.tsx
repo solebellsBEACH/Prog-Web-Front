@@ -61,7 +61,7 @@ export const AnimalForm = () => {
         .then((response) => {
           console.log(response);
           Swal.fire("Animal criado com sucesso!", "", "success");
-          //navigate("/dashboard");
+          navigate("/dashboard");
         })
         .catch((e) => {
           console.log(e);

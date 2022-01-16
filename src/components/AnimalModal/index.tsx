@@ -17,7 +17,6 @@ import { BsPencilSquare } from "react-icons/bs";
 import { api, config } from "../../utils/api/api";
 import Swal from "sweetalert2";
 import { Label } from "../Forms/styles";
-import { CitySelect } from "../CitySelect";
 
 interface AnimalModalProps {
   id: number;
