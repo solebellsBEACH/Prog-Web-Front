@@ -5,6 +5,9 @@ import { apiLocalization } from "../../utils/api/api";
 import { Container } from "./styles";
 
 interface CitySelectProps {
+  city?: string;
+  state?: string;
+
   form: {
     name: string;
     breed: string;
@@ -27,7 +30,7 @@ interface CitySelectProps {
   >;
 }
 
-export const CitySelect = ({ form, setForm }: CitySelectProps) => {
+export const CitySelect = ({ form, setForm, city, state }: CitySelectProps) => {
   const [apiUf, setApiUf] = useState<
     {
       id: number;
@@ -70,6 +73,13 @@ export const CitySelect = ({ form, setForm }: CitySelectProps) => {
     );
     setApiCity(res.data);
   };
+  state = "ES";
+  useEffect(() => {
+    if (city != undefined) {
+      console.log(city, state);
+      setActualCity(city);
+    }
+  }, []);
 
   return (
     <div style={{ display: "flex" }}>

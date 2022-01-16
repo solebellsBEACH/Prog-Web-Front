@@ -17,13 +17,14 @@ import { BsPencilSquare } from "react-icons/bs";
 import { api, config } from "../../utils/api/api";
 import Swal from "sweetalert2";
 import { Label } from "../Forms/styles";
+import { CitySelect } from "../CitySelect";
 
 interface AnimalModalProps {
   id: number;
   name: string;
   breed: string;
   age: number;
-  localization: string;
+  city_loc: string;
   species: number;
   gender: "M" | "F";
   open: boolean;
@@ -40,7 +41,7 @@ export default function AnimalModal({
   gender,
   open,
   setOpen,
-  localization,
+  city_loc,
   getAnimals,
 }: AnimalModalProps) {
   const [typeAnimals, setTypeAnimals] = useState<
@@ -52,7 +53,7 @@ export default function AnimalModal({
     breed: "",
     age: 0.5,
     description: "",
-    city: "",
+    city_loc: "",
     gender: "M",
     type_animal_id: 0,
   });
@@ -70,7 +71,7 @@ export default function AnimalModal({
       name: name,
       breed: breed,
       age: age,
-      city: localization,
+      city_loc: city_loc,
       gender: gender,
       type_animal_id: species,
     });
@@ -223,12 +224,15 @@ export default function AnimalModal({
               <div className="textFieldStyled">
                 <TextField
                   id="outlined-basic"
-                  label="Localização"
+                  label="Cidade"
                   variant="outlined"
                   onChange={(e: any) => {
-                    setForm({ ...form, city: e.target.value });
+                    setForm({ ...form, city_loc: e.target.value });
                   }}
-                  defaultValue={localization}
+                  InputProps={{
+                    readOnly: true,
+                  }}
+                  defaultValue={city_loc}
                 />
               </div>
               <div className="textFieldStyled">

@@ -97,7 +97,7 @@ export const Adoption: React.FC = () => {
           species={actualAnimal.type_animal_id}
           open={isOpenModal}
           setOpen={setIsOpenModal}
-          localization={actualAnimal.city_loc}
+          city_loc={actualAnimal.city_loc}
         />
         <ContainerGrid>{AnimalsBox} </ContainerGrid>
       </Content>
