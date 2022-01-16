@@ -13,7 +13,7 @@ export const Container = styled.div`
 export const Content = styled.div`
   min-width: 30vw;
   width: auto;
-  margin: 1vh;
+  margin-bottom: 1vh;
 font-size:1vw
   min-height: 5vh;
   height: auto;
@@ -24,6 +24,7 @@ font-size:1vw
   align-items: center;
   font-size: 2rem;
   font-style: italic;
+  padding:10px;
   border-radius: 10px;
 `;
 
