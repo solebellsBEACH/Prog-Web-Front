@@ -1,7 +1,12 @@
 import axios from "axios";
+
 //ESSE ARQUIVO É O QUE FAZ A LIGACAO COM A API
 export const api = axios.create({
-  baseURL: "http://localhost:3333/",
+  baseURL: "http://localhost:37743/",
+});
+
+export const apiLocalization = axios.create({
+  baseURL: "https://servicodados.ibge.gov.br/api/v1/",
 });
 
 export const setAuthToken = (token: string | null) => {
@@ -13,6 +18,10 @@ export const setAuthToken = (token: string | null) => {
     localStorage.removeItem("token");
     localStorage.removeItem("user_uuid");
   }
+};
+
+export const resetAuthToken = () => {
+  localStorage.setItem("token", "");
 };
 
 export const config = {

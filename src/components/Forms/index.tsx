@@ -14,6 +14,7 @@ import { TypeAnimalIdResponse } from "../../utils/Models";
 import { api, config } from "../../utils/api/api";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { CitySelect } from "../CitySelect";
 
 export const AnimalForm = () => {
   const [type_of_animalState, setType_of_animal] = useState(0);
@@ -24,7 +25,7 @@ export const AnimalForm = () => {
     breed: "",
     age: 0.5,
     description: "",
-    city: "",
+    city_loc: "",
     gender: "M",
     type_animal_id: type_of_animalState,
   });
@@ -36,6 +37,7 @@ export const AnimalForm = () => {
   useEffect(() => {
     getTypeAnimalId();
   }, []);
+
   const getTypeAnimalId = async () => {
     const response = await api.get("/typeanimal", config);
     setType_animals_id(response.data);
@@ -51,7 +53,7 @@ export const AnimalForm = () => {
       form.name != "" &&
       form.breed != "" &&
       form.description != "" &&
-      form.city != "" &&
+      form.city_loc != "" &&
       form.type_animal_id != 0
     ) {
       api
@@ -59,7 +61,7 @@ export const AnimalForm = () => {
         .then((response) => {
           console.log(response);
           Swal.fire("Animal criado com sucesso!", "", "success");
-          navigate("/dashboard");
+          //navigate("/dashboard");
         })
         .catch((e) => {
           console.log(e);
@@ -154,16 +156,7 @@ export const AnimalForm = () => {
             </MenuItem>
           </Select>
         </FormControl>
-
-        <TextField
-          className="text-field"
-          id="outlined-basic"
-          label="Cidade"
-          variant="outlined"
-          onChange={(e: any) => {
-            setForm({ ...form, city: e.target.value });
-          }}
-        />
+        <CitySelect form={form} setForm={setForm} />
         <div style={{ display: "flex", marginTop: "20px" }}>
           <Button
             onClick={() => {

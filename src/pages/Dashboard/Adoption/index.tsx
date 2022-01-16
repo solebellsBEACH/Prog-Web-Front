@@ -1,15 +1,19 @@
 import { Modal, TextField } from "@material-ui/core";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { AnimalItem } from "../../../components/AnimalItem";
 import AnimalModal from "../../../components/AnimalModal";
 import { Header } from "../../../components/Header";
 import { SettingBox } from "../../../components/SettingsBox";
+import { TaskBar } from "../../../components/TaskBar";
 import { api, config } from "../../../utils/api/api";
 import { IAnimal } from "../../../utils/Models";
 import { Container, Content } from "../styles";
 import { ContainerGrid } from "./styles";
 
 export const Adoption: React.FC = () => {
+  const navigate = useNavigate();
+
   //ARMAZENA O ESTADO DE BUSCA
   const [searchState, setSearchState] = useState("");
   //ESSA FUNCAO RETORNA UM MAP E UM FILTER QUE MUDA QUANDO PESQUISA UM NOME EM FORMA DE COMPONENTE
@@ -23,7 +27,7 @@ export const Adoption: React.FC = () => {
     age: 0,
     type_animal_id: 0,
     gender: "M",
-    localization: "",
+    city_loc: "",
   });
 
   useEffect(() => {
@@ -53,7 +57,7 @@ export const Adoption: React.FC = () => {
             age: item.age,
             type_animal_id: item.type_animal_id,
             gender: item.gender,
-            localization: "d",
+            city_loc: item.city_loc,
           });
           setIsOpenModal(true);
         }}
@@ -70,6 +74,7 @@ export const Adoption: React.FC = () => {
   return (
     <Container style={{}}>
       <Header label="Sistema de Adoção" />
+      <TaskBar />
       <Content>
         <div id="setting-box">
           <TextField
@@ -92,7 +97,7 @@ export const Adoption: React.FC = () => {
           species={actualAnimal.type_animal_id}
           open={isOpenModal}
           setOpen={setIsOpenModal}
-          localization={actualAnimal.localization}
+          localization={actualAnimal.city_loc}
         />
         <ContainerGrid>{AnimalsBox} </ContainerGrid>
       </Content>

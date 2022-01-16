@@ -3,6 +3,7 @@ import TextField from "@material-ui/core/TextField";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import Swal from "sweetalert2";
+import { ButtonConsult } from "../../../components/ButtonConsult";
 import { api } from "../../../utils/api/api";
 import { Container, Content, LinkComponent, Subtitle } from "../styles";
 // AQUI TEMOS A FUNCAO QUE GERA A PAGINA DE REGISTRO
@@ -75,13 +76,19 @@ export const Register = () => {
             setPassword(e.target.value);
           }}
         />
-        <Button
-          style={{ backgroundColor: "#4B0082", marginTop: "2vh" }}
-          variant="contained"
-          onClick={handleLogIn}
+        <div
+          style={{ display: "flex", alignItems: "center", marginTop: "15px" }}
         >
-          Register
-        </Button>
+          <ButtonConsult />
+          <Button
+            style={{ backgroundColor: "#4B0082", marginLeft: "2vh" }}
+            variant="contained"
+            onClick={handleLogIn}
+          >
+            Register
+          </Button>
+        </div>
+
         <LinkComponent onClick={handleRedirectRegister}>
           Caso já tenha um cadastro, clique aqui!
         </LinkComponent>

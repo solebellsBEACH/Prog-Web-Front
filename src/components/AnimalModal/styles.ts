@@ -54,6 +54,9 @@ export const ContentRight = styled.div`
   #nameBox {
     margin: 2vh 0 1vh 0;
   }
+  #age {
+    flex-direction: column;
+  }
 `;
 
 export const ActionIcon = styled.div`

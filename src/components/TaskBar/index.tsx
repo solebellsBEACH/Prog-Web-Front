@@ -5,6 +5,9 @@ import { FaHandHoldingHeart } from "react-icons/fa";
 import { BsCloudDownload } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { GiDogBowl } from "react-icons/gi";
+import { ImExit } from "react-icons/im";
+import { resetAuthToken } from "../../utils/api/api";
+
 //PEGA AS PROPS DO ELEMENTO
 interface ITaskBoxProps {
   label: string;
@@ -29,7 +32,9 @@ export const TaskBar = () => {
     <Container>
       <TaskBox
         label="Informações Gerais"
-        callBackFunct={() => {}}
+        callBackFunct={() => {
+          navigate("/dashboard");
+        }}
         icon={<IoMdBook size={45} />}
       />
       <TaskBox
@@ -44,6 +49,14 @@ export const TaskBar = () => {
         icon={<FaHandHoldingHeart size={40} />}
         callBackFunct={() => {
           navigate("/adoption");
+        }}
+      />
+      <TaskBox
+        label="LogOut"
+        icon={<ImExit size={35} />}
+        callBackFunct={() => {
+          resetAuthToken();
+          navigate("/");
         }}
       />
       <ContainerTaskBox>

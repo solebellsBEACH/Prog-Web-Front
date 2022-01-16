@@ -14,7 +14,7 @@ export const GlobalStyle = createGlobalStyle`
         --Warning	:#FF0000;
         --Attention	:#FFFF00;
         --White	:#FFFFFF;
-        --Background	:#F2CCFF;
+        --Background:#F2CCFF;
         --Black	:#000000;
     }
     button{

@@ -1,4 +1,4 @@
-import { MenuItem, Modal, Select, TextField } from "@material-ui/core";
+import { MenuItem, Modal, Select, Slider, TextField } from "@material-ui/core";
 import { useEffect, useState } from "react";
 import {
   Container,
@@ -16,6 +16,7 @@ import { BsPencilSquare } from "react-icons/bs";
 
 import { api, config } from "../../utils/api/api";
 import Swal from "sweetalert2";
+import { Label } from "../Forms/styles";
 
 interface AnimalModalProps {
   id: number;
@@ -201,14 +202,22 @@ export default function AnimalModal({
                   defaultValue={breed}
                 />
               </div>
-              <div className="textFieldStyled">
-                <TextField
-                  label="Idade"
-                  variant="outlined"
+
+              <div id="age" className="textFieldStyled">
+                <Label>Selecione a idade do animal</Label>
+                <Slider
+                  color="secondary"
+                  aria-label="Temperature"
+                  defaultValue={age}
+                  valueLabelDisplay="auto"
+                  style={{ width: "85%" }}
+                  step={0.5}
+                  marks
+                  min={0.5}
                   onChange={(e: any) => {
                     setForm({ ...form, age: e.target.value });
                   }}
-                  defaultValue={age}
+                  max={15}
                 />
               </div>
               <div className="textFieldStyled">
@@ -220,17 +229,6 @@ export default function AnimalModal({
                     setForm({ ...form, city: e.target.value });
                   }}
                   defaultValue={localization}
-                />
-              </div>
-              <div className="textFieldStyled">
-                <TextField
-                  id="outlined-basic"
-                  label="Especie"
-                  variant="outlined"
-                  onChange={(e: any) => {
-                    setForm({ ...form, type_animal_id: e.target.value });
-                  }}
-                  defaultValue={species}
                 />
               </div>
               <div className="textFieldStyled">

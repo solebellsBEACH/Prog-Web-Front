@@ -3,6 +3,8 @@ import TextField from "@material-ui/core/TextField";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import Swal from "sweetalert2";
+import { ButtonConsult } from "../../../components/ButtonConsult";
+
 import { api, setAuthToken } from "../../../utils/api/api";
 import { Container, Content, LinkComponent, Subtitle } from "../styles";
 
@@ -68,13 +70,19 @@ export const Login = () => {
             setState({ email: state.email, password: e.target.value });
           }}
         />
-        <Button
-          style={{ backgroundColor: "#4B0082", marginTop: "2vh" }}
-          variant="contained"
-          onClick={handleLogIn}
+        <div
+          style={{ display: "flex", alignItems: "center", marginTop: "15px" }}
         >
-          LogIn
-        </Button>
+          <ButtonConsult />
+          <Button
+            style={{ backgroundColor: "#4B0082", marginLeft: "20px" }}
+            variant="contained"
+            onClick={handleLogIn}
+          >
+            LogIn
+          </Button>
+        </div>
+
         <LinkComponent onClick={handleRedirectRegister}>
           Caso não tenha um cadastro, clique aqui!
         </LinkComponent>
