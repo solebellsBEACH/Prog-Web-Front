@@ -2,7 +2,7 @@ import axios from "axios";
 
 //ESSE ARQUIVO É O QUE FAZ A LIGACAO COM A API
 export const api = axios.create({
-  baseURL: "http://localhost:40663/",
+  baseURL: "http://localhost:40225/",
 });
 
 export const apiLocalization = axios.create({
