@@ -2,7 +2,7 @@ import axios from "axios";
 
 //ESSE ARQUIVO É O QUE FAZ A LIGACAO COM A API
 export const api = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
+  baseURL: "https://backendprogweb.herokuapp.com/",
 });
 
 export const apiLocalization = axios.create({
