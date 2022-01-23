@@ -24,7 +24,12 @@ export const Register = () => {
   const handleLogIn = () => {
     if (email != "" && password != "" && name != "") {
       api
-        .post("user", { email: email, password: password, username: name })
+        .post("user", {
+          email: email,
+          password: password,
+          username: name,
+          type_user_id: 1,
+        })
         .then((req) => {
           Swal.fire("Usuário criado com sucesso!", "", "success");
           navigate("/");
