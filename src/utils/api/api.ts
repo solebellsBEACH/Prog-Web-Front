@@ -2,7 +2,7 @@ import axios from "axios";
 
 //ESSE ARQUIVO É O QUE FAZ A LIGACAO COM A API
 export const api = axios.create({
-  baseURL: "https://backendprogweb.herokuapp.com/",
+  baseURL: "http://localhost:38075/",
 });
 
 export const apiLocalization = axios.create({
