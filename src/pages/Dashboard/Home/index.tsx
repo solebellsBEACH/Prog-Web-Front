@@ -5,9 +5,9 @@ import { InformationItem } from "../../../components/InformationItem";
 import { SettingBox } from "../../../components/SettingsBox";
 import { TaskBar } from "../../../components/TaskBar";
 import { api, config } from "../../../utils/api/api";
+import { apiMock } from "../../../utils/mock/apiMock";
 import { IInformation } from "../../../utils/Models";
 import { Container, Content } from "../styles";
-
 interface SelectAnimalProps {
   setState: React.Dispatch<React.SetStateAction<number>>;
 }
@@ -26,7 +26,7 @@ const SelectAnimal = ({ setState }: SelectAnimalProps) => {
     setTypeAnimals(res.data);
   };
 
-  const MenuItensContainer = typeAnimals.map((item) => (
+  const MenuItensContainer = apiMock().typeAnimals.map((item) => (
     <MenuItem value={item.id}>
       <em>{item.type} </em>
     </MenuItem>
@@ -64,9 +64,10 @@ export const Home: React.FC = () => {
     const response = await api.get("/information", config);
     setInformations(response.data);
   };
+
   const renderInformations = (animalInformationId: number | null) => {
-    return informations
-      .filter((val) => {
+    return apiMock()
+      .informations.filter((val) => {
         if (animalInformationId == 0) {
           return val;
         } else if (animalInformationId == val.type_animal_id) {

@@ -15,6 +15,7 @@ import { api, config } from "../../utils/api/api";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { CitySelect } from "../CitySelect";
+import { apiMock } from "../../utils/mock/apiMock";
 
 export const AnimalForm = () => {
   const [type_of_animalState, setType_of_animal] = useState(0);
@@ -43,8 +44,8 @@ export const AnimalForm = () => {
     setType_animals_id(response.data);
   };
 
-  const MenuItensContainer = type_animals_id.map((item, index) => (
-    <MenuItem value={item.id}>
+  const MenuItensContainer = apiMock().typeAnimals.map((item, index) => (
+    <MenuItem key={index} value={item.id}>
       <em>{item.type} </em>
     </MenuItem>
   ));

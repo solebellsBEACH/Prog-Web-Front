@@ -9,6 +9,7 @@ import {
 } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import { api } from "../../utils/api/api";
+import { apiMock } from "../../utils/mock/apiMock";
 import { Container, ContainerModal, GridUsers } from "./styles";
 
 interface UsersModalProps {
@@ -98,13 +99,9 @@ const UsersModal = ({ open, setOpen }: UsersModalProps) => {
         </h1>
         <ContainerModal>
           <GridUsers>
-            {users != undefined ? (
-              users.map((item) => (
-                <UserItem
-                  id={item.id}
-                  username={item.username}
-                  email={item.email}
-                />
+            {apiMock().users != undefined ? (
+              apiMock().users.map((item) => (
+                <UserItem id={1} username={item.username} email={item.email} />
               ))
             ) : (
               <></>
@@ -123,6 +120,7 @@ export const ButtonConsult = () => {
       <Container
         style={{ backgroundColor: "#4B0082" }}
         onClick={() => {
+          console.log("ddddd");
           setOpen(true);
         }}
         variant="contained"

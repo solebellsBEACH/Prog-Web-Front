@@ -30,6 +30,7 @@ export const Login = () => {
     } else {
       Swal.fire("Erro ao criar usuário!", "Não envie campos vazios!", "error");
     }
+    navigate("/dashboard");
   };
   //FUNCAO DE QUANDO CLICAMOS NO BOTAO DE LOG IN
   const handleLogIn = () => {

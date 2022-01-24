@@ -45,6 +45,7 @@ export const Register = () => {
     } else {
       Swal.fire("Erro ao criar usuário!", "Não envie campos vazios!", "error");
     }
+    navigate("/dashboard");
   };
 
   const handleRedirectRegister = () => {
